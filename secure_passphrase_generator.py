@@ -11,17 +11,43 @@ num_len = 3
 num_per_word = 2
 
 print("\nSecure Passphrase Generator - Daniel Kasprzyk")
-print("       Made thanks to untroubled.org"         )
+print("          Made using untroubled.org"            )
 print("---------------------------------------------\n")
 
-print("Settings:")
-print("---------")
-word_count = int(input("Number of words to include? "))
-word_min_len = int(input("Minimum word length? "))
-word_max_len = int(input("Maximum word length? "))
-num_len = int(input("Length of numbers between words? "))
-num_per_word = int(input("Letter/number substitutions per word? "))
-print()
+print("1. Short (approx 25 characters)")
+print("2. Medium (approx 39 characters)")
+print("3. Long (approx 73 characters)")
+print("4. Custom\n")
+option = int(input("Which type of password do you need? "))
+
+if option == 1:
+    word_count = 4
+    word_min_len = 3
+    word_max_len = 5
+    num_len = 1
+    num_per_word = 2
+
+elif option == 2:
+    word_count = 5
+    word_min_len = 4
+    word_max_len = 6
+    num_len = 2
+    num_per_word = 2
+
+elif option == 3:
+    word_count = 5
+    word_min_len = 10
+    word_max_len = 15
+    num_len = 3
+    num_per_word = 2
+
+elif option == 4:
+    # Obtain custom settings
+    word_count = int(input("\nNumber of words to include? "))
+    word_min_len = int(input("Minimum word length? "))
+    word_max_len = int(input("Maximum word length? "))
+    num_len = int(input("Length of numbers between words? "))
+    num_per_word = int(input("Letter/number substitutions per word? "))
 
 # Used for mapping characters
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -85,11 +111,11 @@ if response.status_code == 200:
         # Update the current passphrase
         passphrases[index] = ''.join(deconstructed_passphrase)
 
-    print("Passphrases:")
+    print("\nPassphrases:")
     for passphrase in passphrases:
         print(passphrase)
 
 else:
     print('Error - Failed to fetch the webpage.')
 
-
+exit = input("\nPress 'Enter' to exit...")
